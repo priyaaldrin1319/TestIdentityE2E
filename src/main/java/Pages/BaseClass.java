@@ -1,5 +1,6 @@
 package Pages;
 
+import Utils.DataReader;
 import Utils.PersistentObject;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -23,7 +24,7 @@ public class BaseClass {
         options.addArguments("--incognito");
         options.addArguments("--start-maximized");
         driver = new ChromeDriver(options);
-        driver.get("https://car-checking.com//");
+        driver.get(DataReader.getConfigData("url"));
         PersistentObject.setDriver(driver);
     }
 
