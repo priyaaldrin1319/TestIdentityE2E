@@ -13,12 +13,12 @@ import java.util.regex.Pattern;
 public class ReadFile {
 
 
-    public List<String> readcarregFile() throws IOException {
+    public List<String> readcarregFile(String fileName) throws IOException {
 
         List<String> matches = null;
         try {
             String filePath = System.getProperty("user.dir") + "\\TestData";
-            File file = new File(filePath + "\\" + "car_input - V6" + ".txt");// Replace with your actual path
+            File file = new File(filePath + "\\" + fileName + ".txt");// Replace with your actual path
 
             String regex = "\\b[A-Z]{2}\\d{2}\\s[A-Z]{3}\\b"; // Example: FP79 FGR
             Pattern pattern = Pattern.compile(regex);
@@ -44,14 +44,13 @@ public class ReadFile {
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-
-
         return matches;
     }
 
-    public Map<String, Map<String, String>> readcarregOutputFile() throws IOException {
+    public Map<String, Map<String, String>> readcarregOutputFile(String outputFileName) throws IOException {
         Map<String, Map<String, String>> carDataMap = new HashMap<>();
-        String filePath = System.getProperty("user.dir") + "\\TestData\\car_output - V6" + ".txt";
+        String filePath = System.getProperty("user.dir") + "\\TestData" + "\\" + outputFileName + ".txt";
+
         List<String> lines = Files.readAllLines(Paths.get(filePath));
         for (int i = 1; i < lines.size(); i++) {  // skip header (index 0)
             String line = lines.get(i);
@@ -63,8 +62,8 @@ public class ReadFile {
                 details.put("Model", parts[2].trim());
                 details.put("Year", parts[3].trim());
                 carDataMap.put(reg, details);
-                    }
-                }
+            }
+        }
 
         return carDataMap;
     }

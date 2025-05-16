@@ -29,7 +29,6 @@ public class BaseClass {
 
     @After
     public void after(){
-
-     //  driver.quit();
+       driver.quit();
     }
 }
