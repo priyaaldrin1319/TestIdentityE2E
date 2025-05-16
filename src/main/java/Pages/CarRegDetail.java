@@ -56,7 +56,6 @@ public class CarRegDetail {
                    // invalidRegDet.add(carListItems);
                     continue;
                 }
-
                 carMakeEle = driver.findElement(By.xpath("//table[@class='table table-responsive']//tbody/tr[1]/td[2]"));
                 carModelEle = driver.findElement(By.xpath("//table[@class='table table-responsive']//tbody/tr[2]/td[2]"));
                 carYearofmanufactureEle = driver.findElement(By.xpath("//table[@class='table table-responsive']//tbody/tr[4]/td[2]"));

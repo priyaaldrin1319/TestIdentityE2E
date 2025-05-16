@@ -36,8 +36,8 @@ public class CarRegStepDefinition {
     public void user_verify_car_details_matching() {
 
         for (String regNo : actualDetails.keySet()) {
-            System.out.println(actualDetails.get(regNo).get("Make") + " : " + actualDetails.get(regNo).get("Model") + " : " + actualDetails.get(regNo).get("Year"));
-            System.out.println(expectedDetails.get(regNo).get("Make") + " : " + expectedDetails.get(regNo).get("Model") + " : " + expectedDetails.get(regNo).get("Year"));
+            System.out.println("From Input file: " + actualDetails.get(regNo).get("Make") + " : " + actualDetails.get(regNo).get("Model") + " : " + actualDetails.get(regNo).get("Year"));
+            System.out.println("From Output file: " + expectedDetails.get(regNo).get("Make") + " : " + expectedDetails.get(regNo).get("Model") + " : " + expectedDetails.get(regNo).get("Year"));
             SoftAssert softassert = new SoftAssert();
             softassert.assertEquals(actualDetails.get(regNo).get("Make"), expectedDetails.get(regNo).get("Make"));
             softassert.assertEquals(actualDetails.get(regNo).get("Model"), expectedDetails.get(regNo).get("Model"));
