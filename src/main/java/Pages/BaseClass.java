@@ -1,3 +1,5 @@
+package Pages;
+
 import Utils.PersistentObject;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -5,6 +7,7 @@ import io.cucumber.java.Scenario;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 
 public class BaseClass {
@@ -16,7 +19,10 @@ public class BaseClass {
         this.scenario = scenario;
         System.out.println(scenario.getName());
         WebDriverManager.chromedriver().clearDriverCache().setup();
-        driver = new ChromeDriver();
+        ChromeOptions options=new ChromeOptions();
+        options.addArguments("--incognito");
+        options.addArguments("--start-maximized");
+        driver = new ChromeDriver(options);
         driver.get("https://car-checking.com//");
         PersistentObject.setDriver(driver);
     }
@@ -24,6 +30,6 @@ public class BaseClass {
     @After
     public void after(){
 
-       driver.quit();
+     //  driver.quit();
     }
 }
